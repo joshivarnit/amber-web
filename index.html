@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Amber AI — Sovereign Edge AI & Edge Model Gallery</title>
+  
+  <!-- PWA & Mobile Meta Tags -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#a855f7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Amber AI">
+  <link rel="apple-touch-icon" href="/assets/amber-logo.svg">
+  <link rel="icon" type="image/svg+xml" href="/assets/amber-logo.svg">
+  
+  <!-- SEO & Social Meta -->
+  <meta name="description" content="Sovereign edge AI assistant with rotating Chakra model wheel and free compact models. Runs on Windows, Linux, macOS, iOS, and Android.">
+  <meta property="og:title" content="Amber AI — Sovereign Edge Intelligence">
+  <meta property="og:description" content="Small, free open-weight edge models on Windows, Linux, macOS, iOS, and Android.">
+  <meta property="og:image" content="/assets/amber-logo.svg">
+
+  <!-- Google Fonts: Outfit (Headings) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/scroll-wheel.css">
+
+  <!-- GSAP Animation Library for Smooth Wheel Physics -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+
+  <!-- Sticky Site Header (Chakramantra Style) -->
+  <header class="site-header glass">
+    <div class="header-inner">
+      <a href="#" class="brand-link">
+        <!-- Chakra / Amber Gem SVG -->
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="12" cy="12" r="10" stroke="#a855f7" />
+          <circle cx="12" cy="12" r="4" stroke="#06b6d4" />
+          <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93" stroke="#f59e0b" opacity="0.8" />
+        </svg>
+        <span class="brand-name">Amber<span style="color: #a855f7;">AI</span></span>
+      </a>
+
+      <nav class="site-nav">
+        <a href="#wheel-section" class="nav-item">Chakra Wheel</a>
+        <a href="#editorial" class="nav-item">Insights</a>
+        <a href="#terminal" class="nav-item">AI Terminal</a>
+        <a href="#gallery" class="nav-item">Edge Gallery</a>
+        <a href="#apis" class="nav-item">Public APIs</a>
+        <a href="#downloads" class="nav-pill-btn">
+          <span>📥</span> Downloads
+        </a>
+        <a href="https://vercel.com/common-vernacular-s-projects" target="_blank" rel="noopener noreferrer" class="nav-vercel-team" title="View Team on Vercel">
+          ▲ common-vernacular
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       HERO: 3D ROTATING CHAKRA MODEL WHEEL (Ported from repo-chakramantra)
+       ========================================================================= -->
+  <section id="wheel-section" class="scroll-pin-section">
+    <!-- Top Pill Announcement -->
+    <div class="section-tag section-tag-purple" style="margin-bottom: 1rem;">
+      <span style="width: 8px; height: 8px; border-radius: 50%; background: #c084fc; display: inline-block;"></span>
+      Sovereign Edge Intelligence • 10 Free Open-Weight Models
+    </div>
+
+    <div style="text-align: center; margin-bottom: 1.5rem; max-width: 850px; padding: 0 1rem;">
+      <h1 class="section-title" style="font-size: clamp(2.2rem, 4.5vw, 3.8rem);">
+        The <span class="text-gradient">Chakra Edge</span> AI Wheel
+      </h1>
+      <p class="section-desc" style="margin: 0.5rem auto 0; font-size: 1.05rem;">
+        Spin the wheel to explore small, fast, free open-weight models optimized for consumer devices. Runs on Windows, Linux, macOS, iOS, and Android.
+      </p>
+    </div>
+
+    <!-- The 3D Wheel Container -->
+    <div class="scroll-animation-container">
+
+      <!-- Floating Model Spec Card (Left side) -->
+      <div class="floating-model-card" id="floating-model-info">
+        <div style="font-size: 0.72rem; text-transform: uppercase; color: #06b6d4; font-weight: 700; letter-spacing: 0.08em;">
+          ACTIVE CHAKRA MODEL
+        </div>
+        <div id="float-model-title" style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: #fff;">
+          Qwen 2.5 0.5B
+        </div>
+        <div id="float-model-author" style="font-size: 0.8rem; color: #64748b; margin-top: -4px;">
+          by Alibaba Cloud
+        </div>
+        <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.5rem; display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.8rem;">
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: #64748b;">Quantized Size:</span>
+            <strong id="float-model-size" style="color: #f8fafc;">350 MB</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: #64748b;">Min Memory:</span>
+            <strong id="float-model-ram" style="color: #22d3ee;">1 GB RAM</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: #64748b;">Inference Speed:</span>
+            <strong id="float-model-speed" style="color: #a855f7;">120+ t/s</strong>
+          </div>
+        </div>
+        <button class="btn-cyan" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.45rem; border-radius: 8px; margin-top: 0.25rem;" onclick="document.getElementById('terminal').scrollIntoView({behavior:'smooth'})">
+          ⚡ Chat in Terminal →
+        </button>
+      </div>
+
+      <!-- The SVG Chakra Wheel -->
+      <div class="scroll-wheel-wrapper">
+        <svg id="main-chakra-svg" class="scroll-wheel-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background Base Ring -->
+          <circle cx="250" cy="250" r="230" class="scroll-wheel-bg" opacity="0.9" />
+          <circle cx="250" cy="250" r="240" fill="none" stroke="rgba(168, 85, 247, 0.4)" stroke-width="1.5" stroke-dasharray="6,4" />
+          <circle cx="250" cy="250" r="130" class="scroll-wheel-stroke" />
+
+          <!-- Dynamic 10 Slices Rendered by app.js -->
+          <g id="chakra-wheel-slices"></g>
+        </svg>
+
+        <!-- Center Hub Button -->
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+          <defs>
+            <radialGradient id="chakraHubGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#a855f7" />
+              <stop offset="70%" stop-color="#7e22ce" />
+              <stop offset="100%" stop-color="#06b6d4" />
+            </radialGradient>
+          </defs>
+          <g class="wheel-center-button" style="cursor: pointer; pointer-events: auto;" onclick="randomChakraModel()" title="Pick Random Edge Model">
+            <circle cx="250" cy="250" r="68" fill="#08080c" stroke="#a855f7" stroke-width="2.5" />
+            <circle cx="250" cy="250" r="58" fill="url(#chakraHubGrad)" opacity="0.92" />
+            <text x="250" y="242" fill="#fff" text-anchor="middle" font-size="13" font-weight="800" font-family="'Outfit', sans-serif">SPIN</text>
+            <text x="250" y="262" fill="#fff" text-anchor="middle" font-size="13" font-weight="800" font-family="'Outfit', sans-serif">MODEL</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Floating Terminal Quick Launch Card (Right side, like ChakraChess) -->
+      <a href="#terminal" class="floating-terminal-card group">
+        <div style="width: 48px; height: 48px; border-radius: 14px; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+          ⚡
+        </div>
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 1.05rem; color: #fff;">
+            Amber Terminal
+          </div>
+          <div style="font-size: 0.75rem; color: #64748b; margin-top: 2px;">
+            Dual SAG • Local Edge Engine
+          </div>
+        </div>
+        <div style="font-size: 0.8rem; font-weight: 600; color: #22d3ee; display: flex; align-items: center; gap: 4px;">
+          Launch Terminal →
+        </div>
+      </a>
+
+      <!-- Wheel Controls Bar -->
+      <div class="wheel-controls">
+        <button class="wheel-ctrl-btn" onclick="spinChakraWheel(-1)">◀ Prev Model</button>
+        <button class="wheel-ctrl-btn" style="color: #c084fc; font-weight: 700;" onclick="randomChakraModel()">🎲 Random</button>
+        <button class="wheel-ctrl-btn" onclick="spinChakraWheel(1)">Next Model ▶</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       EDITORIAL FEED & LATEST INSIGHTS (Chakramantra Grid Style)
+       ========================================================================= -->
+  <section id="editorial" class="page-section" style="border-top: 1px solid rgba(255, 255, 255, 0.05);">
+    <div style="display: flex; flex-direction: column; md:flex-row; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem;">
+      <div>
+        <div class="section-tag section-tag-cyan">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #22d3ee; display: inline-block;"></span>
+          Editorial Feed
+        </div>
+        <h2 class="section-title">Latest Insights</h2>
+        <p class="section-desc">Deep dives on small free models, local quantization, multiplatform sovereignty & dual search.</p>
+      </div>
+    </div>
+
+    <!-- Category Filter Bar (Exact repo-chakramantra Style) -->
+    <div class="category-filter-bar">
+      <span class="cat-chip active" onclick="filterCatalog('All', this)">All Models</span>
+      <span class="cat-chip" onclick="filterCatalog('Ultra-Light', this)">⚡ Ultra-Light (< 500MB)</span>
+      <span class="cat-chip" onclick="filterCatalog('Compact', this)">📦 Compact (1-2GB)</span>
+      <span class="cat-chip" onclick="filterCatalog('High Power', this)">🚀 High Power (2-4GB)</span>
+      <span class="cat-chip" onclick="filterCatalog('Reasoning', this)">🧠 DeepSeek-R1 Distill</span>
+      <span class="cat-chip" onclick="filterCatalog('Vision', this)">👁️ Moondream2 Vision</span>
+    </div>
+
+    <!-- Editorial 3-Column Grid -->
+    <div class="editorial-grid" id="editorial-articles-grid">
+      <!-- Rendered dynamically by app.js -->
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       LIVE INTERACTIVE AI TERMINAL (In-Browser Sovereign Runner)
+       ========================================================================= -->
+  <section id="terminal" class="page-section" style="border-top: 1px solid rgba(255, 255, 255, 0.05);">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto 2.5rem;">
+      <div class="section-tag section-tag-purple">Interactive Edge Terminal</div>
+      <h2 class="section-title">Live Sovereign AI Playground</h2>
+      <p class="section-desc" style="margin: 0.5rem auto 0;">
+        Experience streaming edge generation running right in your browser. Seamlessly switch models and toggle Dual SAG web search.
+      </p>
+    </div>
+
+    <div class="terminal-container">
+      <!-- Terminal Left Sidebar -->
+      <aside class="terminal-sidebar">
+        <div style="font-size: 0.72rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 0.6rem;">
+          ACTIVE MODEL
+        </div>
+        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(168,85,247,0.3); border-radius: 12px; padding: 0.85rem; margin-bottom: 1.25rem;">
+          <div style="font-weight: 700; color: #fff; font-size: 0.95rem;" id="terminal-active-model-chip">Qwen 2.5 0.5B</div>
+          <div style="font-size: 0.78rem; color: #94a3b8; margin-top: 3px;">Quantized Q4_K_M GGUF</div>
+          <a href="#" id="terminal-download-btn" target="_blank" rel="noopener noreferrer" style="display: inline-block; font-size: 0.75rem; color: #22d3ee; margin-top: 6px; text-decoration: none;">
+            📥 Direct GGUF Weights →
+          </a>
+        </div>
+
+        <div style="font-size: 0.72rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 0.6rem;">
+          QUICK SWITCH WHEEL
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.4rem; overflow-y: auto; max-height: 280px; padding-right: 4px;">
+          <button class="cat-chip" style="text-align: left; border-radius: 8px;" onclick="selectChakraModel(0)">⚡ Qwen 2.5 0.5B (350MB)</button>
+          <button class="cat-chip" style="text-align: left; border-radius: 8px;" onclick="selectChakraModel(1)">⚡ SmolLM2 135M (95MB)</button>
+          <button class="cat-chip" style="text-align: left; border-radius: 8px;" onclick="selectChakraModel(2)">⚡ SmolLM2 360M (240MB)</button>
+          <button class="cat-chip" style="text-align: left; border-radius: 8px;" onclick="selectChakraModel(3)">📦 Llama 3.2 1B (750MB)</button>
+          <button class="cat-chip" style="text-align: left; border-radius: 8px;" onclick="selectChakraModel(5)">🧠 DeepSeek R1 1.5B (1.1GB)</button>
+          <button class="cat-chip" style="text-align: left; border-radius: 8px;" onclick="selectChakraModel(6)">📦 Gemma 2 2B (1.6GB)</button>
+          <button class="cat-chip" style="text-align: left; border-radius: 8px;" onclick="selectChakraModel(8)">🚀 Phi-3.5 Mini (2.2GB)</button>
+        </div>
+
+        <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; color: #64748b;">
+          Sovereign Edge Engine v1.2.0<br>
+          Zero Telemetry Mode
+        </div>
+      </aside>
+
+      <!-- Terminal Main Chat Area -->
+      <div class="terminal-main">
+        <!-- Topbar -->
+        <div style="padding: 0.85rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; background: rgba(8,8,12,0.6);">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 0.78rem; font-weight: 600; padding: 2px 8px; border-radius: 9999px; background: rgba(74,222,128,0.15); color: #4ade80;">● Online</span>
+            <span style="font-size: 0.78rem; font-weight: 600; padding: 2px 8px; border-radius: 9999px; background: rgba(6,182,212,0.15); color: #22d3ee;">🌐 Dual SAG (Google + DDG)</span>
+          </div>
+          <div>
+            <a href="#downloads" class="nav-pill-btn" style="padding: 0.25rem 0.65rem; font-size: 0.75rem;">
+              Install Native Binary
+            </a>
+          </div>
+        </div>
+
+        <!-- Chat Output Messages -->
+        <div id="terminal-messages-container" style="flex: 1; overflow-y: auto; padding: 1.5rem;">
+          <!-- Dynamically populated by app.js -->
+        </div>
+
+        <!-- Starter Prompt Chips -->
+        <div style="padding: 0 1.25rem 0.5rem; display: flex; gap: 0.5rem; overflow-x: auto; white-space: nowrap; scrollbar-width: none;">
+          <button class="cat-chip" onclick="usePrompt('Explain how DeepSeek-R1 distilled models execute on mobile phones')">🧠 DeepSeek-R1 Distill</button>
+          <button class="cat-chip" onclick="usePrompt('Write an optimized Kotlin coroutine Flow for token streaming')">💻 Kotlin Coroutines</button>
+          <button class="cat-chip" onclick="usePrompt('Translate \'Truth alone triumphs\' into Sanskrit with IAST Romanization')">🕉️ Sanskrit & Hindi</button>
+          <button class="cat-chip" onclick="usePrompt('Explain quantum superposition in 3 concise bullet points')">🔬 Quantum Physics</button>
+        </div>
+
+        <!-- Input Bar -->
+        <div style="padding: 0.85rem 1.25rem; border-top: 1px solid rgba(255,255,255,0.06); background: rgba(8,8,12,0.9);">
+          <div style="display: flex; align-items: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 0.4rem 0.75rem; gap: 0.6rem;">
+            <input type="text" id="terminal-chat-input" style="flex: 1; background: transparent; border: none; outline: none; color: #fff; font-size: 0.92rem; font-family: inherit;" placeholder="Ask Amber AI anything (Coding, Science, Sanskrit, General Reasoning)...">
+            <button id="terminal-send-btn" class="btn-primary" style="padding: 0.45rem 1rem; border-radius: 8px; font-size: 0.85rem;">
+              Send ➤
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       EDGE MODEL GALLERY (Curated Small Free Models)
+       ========================================================================= -->
+  <section id="gallery" class="page-section" style="border-top: 1px solid rgba(255, 255, 255, 0.05);">
+    <div style="margin-bottom: 2.5rem;">
+      <div class="section-tag section-tag-amber">Curated Edge Repository</div>
+      <h2 class="section-title">Edge Model Gallery</h2>
+      <p class="section-desc">
+        Small, fast, free open-weight models optimized for consumer laptops, smartphones, and edge hardware.
+      </p>
+    </div>
+
+    <!-- Models Grid -->
+    <div class="model-catalog-grid" id="models-gallery-grid">
+      <!-- Populated by app.js -->
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       PUBLIC APIS & INTEGRATION CODE (Chakramantra Style)
+       ========================================================================= -->
+  <section id="apis" class="page-section" style="border-top: 1px solid rgba(255, 255, 255, 0.05);">
+    <div style="margin-bottom: 2rem;">
+      <div class="section-tag section-tag-cyan">Developer Integration</div>
+      <h2 class="section-title">Public Endpoints & Local Inference API</h2>
+      <p class="section-desc">
+        Interact with Amber's local engine using standard OpenAI-compatible API schemas.
+      </p>
+    </div>
+
+    <div class="glass-card" style="padding: 2rem;">
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem;">
+        <button class="cat-chip active" onclick="copyApiCode('curl')">cURL</button>
+        <button class="cat-chip" onclick="copyApiCode('python')">Python</button>
+        <button class="cat-chip" onclick="copyApiCode('js')">JavaScript</button>
+      </div>
+
+      <pre class="code-block"><code>curl -X POST http://localhost:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen-2.5-0.5b",
+    "messages": [
+      {"role": "user", "content": "Explain quantum superposition in simple terms"}
+    ]
+  }'</code></pre>
+
+      <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #94a3b8;">
+        <span>OpenAI compatible • Supports streaming SSE responses</span>
+        <button class="btn-secondary" style="padding: 0.35rem 0.85rem; font-size: 0.8rem;" onclick="copyApiCode('curl')">
+          📋 Copy cURL Request
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       DOWNLOADS CENTER (All 5 Platforms: Windows, Android, Mac, Linux, iOS)
+       ========================================================================= -->
+  <section id="downloads" class="page-section" style="border-top: 1px solid rgba(255, 255, 255, 0.05);">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
+      <div class="section-tag section-tag-purple">Multiplatform Distributions</div>
+      <h2 class="section-title">Download Amber AI</h2>
+      <p class="section-desc" style="margin: 0.5rem auto 0;">
+        Native sovereign binaries bundled with runtime for Windows, Android, macOS, Linux, and iOS.
+      </p>
+    </div>
+
+    <div class="download-grid">
+      <!-- Windows -->
+      <div class="glass-card os-card">
+        <div class="os-icon">🪟</div>
+        <h3 style="font-size: 1.35rem; color: #fff; margin-bottom: 0.35rem;">Windows</h3>
+        <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 1.5rem; flex: 1;">
+          Windows 10 & 11 (64-bit). Embedded JVM runtime bundled. Zero Python or Java install needed.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <a href="/downloads/windows/Amber-1.0.0.exe" class="btn-primary" style="justify-content: center; font-size: 0.85rem;" download>
+            📥 Standalone EXE (58 MB)
+          </a>
+          <a href="/downloads/windows/Amber-1.0.0.msi" class="btn-secondary" style="justify-content: center; font-size: 0.85rem;" download>
+            📦 Windows MSI Installer (57 MB)
+          </a>
+        </div>
+      </div>
+
+      <!-- Android -->
+      <div class="glass-card os-card">
+        <div class="os-icon">🤖</div>
+        <h3 style="font-size: 1.35rem; color: #fff; margin-bottom: 0.35rem;">Android</h3>
+        <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 1.5rem; flex: 1;">
+          For Android 8.0+ devices. Qualcomm Snapdragon, MediaTek, and Tensor hardware acceleration.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <a href="/downloads/android/Amber-Android.apk" class="btn-primary btn-cyan" style="justify-content: center; font-size: 0.85rem;" download>
+            📥 Download Native APK
+          </a>
+          <button class="btn-secondary" style="justify-content: center; font-size: 0.85rem;" onclick="alert('On Android: Open this site in Chrome and tap Install App / Add to Home screen for instant standalone installation!')">
+            📲 1-Click WebAPK / PWA
+          </button>
+        </div>
+      </div>
+
+      <!-- macOS -->
+      <div class="glass-card os-card">
+        <div class="os-icon">🍎</div>
+        <h3 style="font-size: 1.35rem; color: #fff; margin-bottom: 0.35rem;">macOS</h3>
+        <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 1.5rem; flex: 1;">
+          Apple Silicon (M1/M2/M3/M4) Metal acceleration and Intel x86_64 architecture support.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <a href="/downloads/macos/amber-mac.sh" class="btn-primary btn-amber" style="justify-content: center; font-size: 0.85rem;" download>
+            📥 Universal macOS Script
+          </a>
+          <button class="btn-secondary" style="justify-content: center; font-size: 0.85rem;" onclick="alert('In Safari on macOS: Click File → Add to Dock to run Amber as a native Mac application!')">
+            🍏 Add to Mac Dock (PWA)
+          </button>
+        </div>
+      </div>
+
+      <!-- Linux -->
+      <div class="glass-card os-card">
+        <div class="os-icon">🐧</div>
+        <h3 style="font-size: 1.35rem; color: #fff; margin-bottom: 0.35rem;">Linux</h3>
+        <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 1.5rem; flex: 1;">
+          Universal package for Ubuntu, Debian, Fedora, Arch Linux, and openSUSE.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <a href="/downloads/linux/amber-linux.sh" class="btn-primary" style="justify-content: center; font-size: 0.85rem;" download>
+            📥 Universal Linux Launcher
+          </a>
+          <span style="font-size: 0.75rem; text-align: center; color: #64748b; margin-top: 4px;">Run: chmod +x amber-linux.sh && ./amber-linux.sh</span>
+        </div>
+      </div>
+
+      <!-- iOS -->
+      <div class="glass-card os-card">
+        <div class="os-icon">📱</div>
+        <h3 style="font-size: 1.35rem; color: #fff; margin-bottom: 0.35rem;">iOS (iPhone & iPad)</h3>
+        <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 1.5rem; flex: 1;">
+          Zero App Store friction! Instant standalone install with full offline cache and WebGPU.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <button class="btn-primary btn-cyan" style="justify-content: center; font-size: 0.85rem;" onclick="alert('On iPhone / iPad:\n1. Open this page in Safari\n2. Tap the Share button (square with arrow)\n3. Tap Add to Home Screen\n4. Amber will launch as a fullscreen standalone app!')">
+            📲 Install PWA on iOS
+          </button>
+          <span style="font-size: 0.75rem; text-align: center; color: #64748b; margin-top: 4px;">Zero URL bars • Standalone fullscreen</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vercel Deployment Hub Banner (common-vernacular-s-projects) -->
+    <div class="vercel-hub-banner">
+      <div>
+        <div style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 9999px; background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); font-size: 0.75rem; color: #d8b4fe; font-weight: 700; margin-bottom: 0.75rem;">
+          ▲ VERCEL TEAM: common-vernacular-s-projects
+        </div>
+        <h3 style="font-size: 1.7rem; color: #fff; font-weight: 800;">Deploy Your Own Sovereign Amber Hub</h3>
+        <p style="color: #94a3b8; font-size: 0.95rem; max-width: 620px; margin-top: 0.35rem;">
+          Pre-configured for global CDN caching, zero build limits, and instant serverless routing on Vercel.
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a href="https://vercel.com/common-vernacular-s-projects" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background: #fff; color: #000; box-shadow: 0 4px 14px rgba(255,255,255,0.25);">
+          ▲ Open Team on Vercel
+        </a>
+        <button class="btn-secondary" onclick="navigator.clipboard.writeText('npx vercel --prod'); alert('Copied to clipboard: npx vercel --prod')">
+          📋 Copy Deploy CLI
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (Chakramantra Style) -->
+  <footer class="glass" style="border-top: 1px solid rgba(255,255,255,0.06); padding: 3rem 1.25rem; margin-top: 4rem;">
+    <div style="max-width: 1250px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.65rem;">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="width: 22px; height: 22px;">
+          <circle cx="12" cy="12" r="10" stroke="#a855f7" />
+          <circle cx="12" cy="12" r="4" stroke="#06b6d4" />
+        </svg>
+        <span style="font-family: var(--font-heading); font-weight: 700; color: #fff;">Amber AI</span>
+        <span style="color: #64748b; font-size: 0.85rem;">— Sovereign Multiplatform Edge Intelligence</span>
+      </div>
+
+      <div style="color: #64748b; font-size: 0.82rem;">
+        <span>Connected to <a href="https://vercel.com/common-vernacular-s-projects" target="_blank" style="color: #c084fc; text-decoration: none;">common-vernacular-s-projects</a> • Apache 2.0</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "Amber AI - Sovereign Edge AI",
+  "short_name": "Amber",
+  "description": "On-device sovereign AI assistant with small free edge models for Windows, Linux, macOS, iOS, and Android.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0B0E",
+  "theme_color": "#F59E0B",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/assets/amber-logo.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "utilities", "developer tools"],
+  "screenshots": []
+}
+

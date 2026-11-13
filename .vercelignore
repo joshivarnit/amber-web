@@ -1,0 +1,5 @@
+# Vercel Ignore File
+downloads/windows/Amber-1.0.0.msi
+node_modules/
+.git/
+*.log

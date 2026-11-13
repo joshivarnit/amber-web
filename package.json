@@ -1,0 +1,25 @@
+{
+  "name": "amber-web",
+  "version": "1.2.0",
+  "description": "Amber AI - Sovereign Edge AI Assistant with Edge Model Gallery for Windows, Linux, macOS, iOS, and Android",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "deploy": "npx vercel --prod"
+  },
+  "keywords": [
+    "amber",
+    "edge-ai",
+    "llm",
+    "webllm",
+    "gguf",
+    "qwen",
+    "smollm",
+    "llama3",
+    "onnx",
+    "webgpu",
+    "cross-platform"
+  ],
+  "author": "Amber Team",
+  "license": "Apache-2.0"
+}

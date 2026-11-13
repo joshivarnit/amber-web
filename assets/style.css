@@ -1,0 +1,544 @@
+/* ==============================================================================
+   Amber AI — Sovereign Edge Web Platform (Chakramantra Theme)
+   Modeled after repo-chakramantra2.vercel.app & common-vernacular-s-projects
+   ============================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --background: #08080c;
+  --background-alt: #050508;
+  --foreground: #f8fafc;
+  --primary: #a855f7;       /* Cyber Purple */
+  --primary-glow: rgba(168, 85, 247, 0.35);
+  --accent: #06b6d4;        /* Electric Cyan */
+  --accent-glow: rgba(6, 182, 212, 0.3);
+  --amber: #f59e0b;         /* Amber Core */
+  --amber-glow: rgba(245, 158, 11, 0.35);
+  --card-bg: rgba(18, 18, 26, 0.75);
+  --card-bg-hover: rgba(24, 24, 36, 0.9);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 80% 40%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
+    linear-gradient(to bottom, #08080c, #050508);
+  background-attachment: fixed;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+}
+
+/* Glassmorphism Classes (Chakramantra standard) */
+.glass {
+  background: rgba(12, 12, 18, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  border-radius: 18px;
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: var(--card-bg-hover);
+  border-color: rgba(168, 85, 247, 0.35);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(168, 85, 247, 0.2);
+  transform: translateY(-3px);
+}
+
+.glass-card-cyan:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(6, 182, 212, 0.2);
+}
+
+/* Text Gradients */
+.text-gradient {
+  background: linear-gradient(135deg, #f8fafc 0%, #c084fc 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #e9d5ff 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #a5f3fc 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-amber {
+  background: linear-gradient(135deg, #fde68a 0%, #f59e0b 50%, #f97316 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Sticky Header */
+header.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(8, 8, 12, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header-inner {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-icon {
+  width: 26px;
+  height: 26px;
+  color: #c084fc;
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+nav.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-item {
+  color: rgba(248, 250, 252, 0.7);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.nav-item:hover, .nav-item.active {
+  color: #fff;
+}
+
+.nav-item.active {
+  color: #38bdf8;
+}
+
+.nav-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 10px;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #d8b4fe;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.nav-pill-btn:hover {
+  background: rgba(168, 85, 247, 0.22);
+  border-color: rgba(168, 85, 247, 0.5);
+  color: #fff;
+}
+
+.nav-vercel-team {
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.nav-vercel-team:hover {
+  color: #fff;
+  border-color: #38bdf8;
+}
+
+/* Category Filter Chips (Exact Chakramantra Bar) */
+.category-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  scrollbar-width: none;
+}
+
+.category-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.cat-chip {
+  flex-shrink: 0;
+  padding: 0.4rem 0.95rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+}
+
+.cat-chip:hover, .cat-chip.active {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: rgba(168, 85, 247, 0.45);
+  color: #f3e8ff;
+}
+
+/* Section Containers */
+section.page-section {
+  padding: 5rem 1.25rem;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  color: #22d3ee;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.85rem;
+}
+
+.section-tag-purple {
+  background: rgba(168, 85, 247, 0.1);
+  border-color: rgba(168, 85, 247, 0.25);
+  color: #c084fc;
+}
+
+.section-tag-amber {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.25);
+  color: #fbbf24;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.5vw, 2.85rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+}
+
+.section-desc {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  max-width: 680px;
+  margin-top: 0.45rem;
+}
+
+/* Grids */
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.model-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Chakramantra Article / Model Card */
+.article-card {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.genre-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: 8px;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #d8b4fe;
+}
+
+.genre-tag-cyan {
+  background: rgba(6, 182, 212, 0.12);
+  border-color: rgba(6, 182, 212, 0.25);
+  color: #67e8f9;
+}
+
+.genre-tag-amber {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.25);
+  color: #fde68a;
+}
+
+.read-time {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: 0.6rem;
+  transition: color 0.2s;
+}
+
+.article-card:hover .card-title {
+  color: #c084fc;
+}
+
+.card-excerpt {
+  color: #94a3b8;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+/* Chat Terminal Card (Cyber style) */
+.terminal-container {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  height: 720px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.terminal-sidebar {
+  background: rgba(10, 10, 16, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-main {
+  background: rgba(12, 12, 18, 0.9);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Downloads Section Cards */
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.os-card {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.os-icon {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 18px var(--primary-glow);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 24px rgba(168, 85, 247, 0.5);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.btn-cyan {
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  box-shadow: 0 4px 18px var(--accent-glow);
+}
+
+.btn-cyan:hover {
+  box-shadow: 0 6px 24px rgba(6, 182, 212, 0.5);
+}
+
+.btn-amber {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #0b0b0e;
+  box-shadow: 0 4px 18px var(--amber-glow);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+/* Vercel Deployment Card (Ported from common-vernacular-s-projects) */
+.vercel-hub-banner {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(6, 182, 212, 0.08) 50%, rgba(12, 12, 18, 0.95) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  border-radius: 22px;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(168, 85, 247, 0.15);
+}
+
+/* Code Snippets for APIs */
+pre.code-block {
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: #a5f3fc;
+  overflow-x: auto;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .terminal-container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .terminal-sidebar {
+    display: none;
+  }
+  .terminal-main {
+    height: 600px;
+  }
+  nav.site-nav {
+    display: none;
+  }
+}
